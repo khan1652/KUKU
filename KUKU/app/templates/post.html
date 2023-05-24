@@ -5,7 +5,7 @@
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="custom-select">
-      <div class="select_notice">양식에 맞지 않게 작성할 시 새로고침됩니다!</div>
+      <div class="select_notice">양식에 맞지 않을 경우 자동 새로고침됩니다!</div>
       <select name="category" id="categorySelect">
         <option value="" selected>카테고리 선택하기</option>
         <option value="day">대동제의 낮</option>

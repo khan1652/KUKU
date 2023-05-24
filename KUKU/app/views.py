@@ -15,12 +15,15 @@ def home(request):
     visitor.visited += 1
     visitor.save()
 
-    return render(request, 'home.html')
+    posts = Picture.objects.all().count()
+    print(posts)
+    print(visitor.visited)
+    return render(request, 'home.html', {'visitors': visitor.visited, "posts": posts })
 
 def ranking(request):
     try:
         top_3_by_fm = Picture.objects.values('fm').annotate(total_likes=Sum('like')).order_by('-total_likes')[:3]
-        print(top_3_by_fm)
+        (top_3_by_fm)
         day_top3 = Picture.objects.filter(category='day').order_by('-like')[:3]
         night_top3 = Picture.objects.filter(category='night').order_by('-like')[:3]
         ipselenti_top3 = Picture.objects.filter(category='ipselenti').order_by('-like')[:3]
